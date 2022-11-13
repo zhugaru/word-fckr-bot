@@ -9,13 +9,13 @@ public class Fckr {
         String origWord = word;
         word = word.toLowerCase();
 
-        if (word.equals("/start")) {
-            return "Напиши мне любое слово, а я его как следует хуйну";
+        if (word.equals(START)) {
+            return START_MESSAGE;
         }
 
         for (char letter : word.toCharArray()) {
             if (!word.matches(CYRILLIC) || word.matches(SYMBOLS)) {
-                return reactions.get(new Random().nextInt(4));
+                return REACTIONS.get(new Random().nextInt(4));
             }
             if (getExceptionWord(origWord) != null) {
                 return getExceptionWord(origWord);
@@ -30,7 +30,7 @@ public class Fckr {
             }
         }
         return word.isEmpty()
-                ? shortTextReactions.get(new Random().nextInt(6))
+                ? SHORT_TEXT_REACTIONS.get(new Random().nextInt(5))
                 : origWord + PREFIX + word + ")))";
     }
 }
